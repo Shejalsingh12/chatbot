@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Diet Tracker Bot</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container-fluid h-100 d-flex justify-content-center align-items-center">
+        <div class="chat-container">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="https://i.ibb.co/fSNP7Rz/icons8-chatgpt-512.png" class="user-img">
+                            <span class="chat-title ml-3">Nutrismart </span>
+                        </div>
+                        <div class="header-actions">
+                            <i id="action_menu_btn" class="fas fa-ellipsis-v"></i>
+                        </div>
+                    </div>
+                </div>
+                <div id="messageArea" class="card-body message-body">
+                    <!-- Chat messages will be appended here -->
+                </div>
+                <div class="card-footer">
+                    <form id="messageForm" class="d-flex">
+                        <input type="text" id="messageInput" name="message" placeholder="Type your message..." class="form-control" required />
+                        <button type="submit" class="btn btn-send ml-2">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <button type="button" id="voice-btn" class="btn btn-voice ml-2">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#messageForm').on('submit', function (event) {
+                event.preventDefault();
+                let userMessage = $('#messageInput').val();
+                let currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                $('#messageInput').val('');
+                appendMessage(userMessage, 'right', currentTime);
+                scrollToBottom();
+                sendMessageToBot(userMessage, currentTime);
+            });
+
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+
+            $('#voice-btn').click(function () {
+                recognition.start();
+            });
+
+            recognition.onresult = function (event) {
+                const speechToText = event.results[0][0].transcript;
+                $('#messageInput').val(speechToText);
+                $('#messageForm').submit();
+            };
+
+            recognition.onerror = function (event) {
+                console.error('Voice recognition error:', event.error);
+            };
+
+            function appendMessage(text, side, time) {
+                let messageHtml = `
+                    <div class="message ${side}">
+                        <div class="message-text">${text}</div>
+                        <span class="message-time">${time}</span>
+                    </div>`;
+                $('#messageArea').append(messageHtml);
+            }
+
+            function scrollToBottom() {
+                $('#messageArea').scrollTop($('#messageArea')[0].scrollHeight);
+            }
+
+            function sendMessageToBot(message, time) {
+                $.ajax({
+                    type: "POST",
+                    url: "/get",
+                    data: { msg: message },
+                    dataType: "json"
+                }).done(function (response) {
+                    appendMessage(response.response, 'left', time);
+                    speakResponse(response.response);
+                    scrollToBottom();
+                }).fail(function (error) {
+                    console.error("Error:", error);
+                });
+            }
+
+            function speakResponse(text) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        });
+    </script>
+</body>
+</html>

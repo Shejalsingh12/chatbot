@@ -1,0 +1,51 @@
+{
+  "intents": [
+    {
+      "tag": "spaghetti",
+      "patterns": ["How do I make spaghetti?", "Can you tell me how to cook spaghetti?", "spaghetti recipe", "What ingredients are needed for spaghetti?", "steps to prepare spaghetti"],
+      "responses": ["To make spaghetti, boil pasta in salted water until al dente. In a separate pan, cook ground beef with onions and garlic, then add tomato sauce and simmer. Combine the pasta with the sauce, and garnish with parmesan cheese and herbs."]
+    },
+    {
+      "tag": "caesar_salad",
+      "patterns": ["How to prepare a Caesar salad?", "Can you tell me how to make Caesar salad?", "Caesar salad recipe", "What do I need for Caesar salad?", "steps to make Caesar salad"],
+      "responses": ["To make Caesar salad, start by chopping romaine lettuce. Add croutons, parmesan cheese, and Caesar dressing. Optionally, you can top with grilled chicken for extra protein. Toss everything together and serve chilled."]
+    },
+    {
+      "tag": "hello",
+      "patterns": ["hello ji", "hi there", "hey", "hello", "hi"],
+      "responses": ["Hi, how are you?", "Hello! How can I assist you today?", "Hi, what can I help you with?"]
+    },
+    {
+      "tag": "pancakes",
+      "patterns": ["How do I make pancakes?", "pancake recipe", "steps to prepare pancakes", "What ingredients are needed for pancakes?", "Can you tell me how to cook pancakes?"],
+      "responses": ["To make pancakes, mix flour, sugar, baking powder, eggs, milk, and a pinch of salt into a batter. Heat a pan and pour in some batter, cooking until bubbles form. Flip and cook the other side until golden brown. Serve with butter and syrup."]
+    },
+    {
+      "tag": "vegan_salad",
+      "patterns": ["How do I make a vegan salad?", "vegan salad recipe", "What ingredients are needed for a vegan salad?", "Can you tell me how to prepare a vegan salad?"],
+      "responses": ["For a vegan salad, combine mixed greens with chickpeas, diced avocado, cucumbers, and cherry tomatoes. Dress it with olive oil, lemon juice, salt, and pepper for a fresh, healthy meal."]
+    },
+    {
+      "tag": "gluten_free_pasta",
+      "patterns": ["How do I make gluten-free pasta?", "gluten-free pasta recipe", "Can you tell me how to prepare gluten-free pasta?", "What ingredients do I need for gluten-free pasta?"],
+      "responses": ["To make gluten-free pasta, boil gluten-free pasta in salted water. In a pan, sauté garlic in olive oil, add cherry tomatoes, and your favorite sauce. Once the pasta is cooked, mix with the sauce and top with fresh herbs and cheese."]
+    },
+    {
+      "tag": "low_carb_diet",
+      "patterns": ["Can you suggest a low-carb meal?", "What is a low-carb recipe?", "How do I follow a low-carb diet?", "What foods are good for a low-carb diet?"],
+      "responses": ["For a low-carb meal, try grilled salmon with steamed broccoli, or a salad made with mixed greens, avocado, grilled chicken, and olive oil dressing. You can also snack on boiled eggs, nuts, and cheese."]
+    },
+    {
+      "tag": "keto_breakfast",
+      "patterns": ["What can I eat for a keto breakfast?", "keto breakfast ideas", "Can you suggest a keto breakfast?", "What is a good keto meal for the morning?"],
+      "responses": ["For a keto breakfast, try scrambled eggs with avocado and bacon, an omelette with cheese and spinach, or a smoothie made with unsweetened almond milk, chia seeds, and coconut oil."]
+    },
+    
+      {
+        "tag": "bye",
+        "patterns": ["bye", "Bye", "goodbye", "Goodbye", "see you", "See you later"],
+        "responses": ["Bye! See you next time.", "Goodbye! Take care.", "See you later!"]
+      }
+      
+  ]
+}

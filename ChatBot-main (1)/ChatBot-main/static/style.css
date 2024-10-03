@@ -1,0 +1,126 @@
+/* General Layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #2193b0, #6dd5ed);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+	
+	  
+}
+
+.container-fluid {
+    height: 100%;
+}
+
+.chat-container {
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.chat-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.message-body {
+    padding: 15px;
+    height: 400px;
+    overflow-y: auto;
+    background-color: #f1f1f1;
+}
+
+.message {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.message.right {
+    justify-content: flex-end;
+}
+
+.message-text {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+}
+
+.message.right .message-text {
+    background-color: #0084FF;
+    
+}
+
+.message-time {
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.card-footer {
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+.form-control {
+    background-color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 15px;
+}
+
+.btn {
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background-color: #4CAF50;
+}
+
+.btn-voice {
+    background-color: #FF9800;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .chat-container {
+        max-width: 100%;
+        height: 100%;
+    }
+
+    .message-body {
+        height: 300px;
+    }
+}
